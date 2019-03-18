@@ -2,8 +2,8 @@ package main
 
 import (
 	"fmt"
-	"github.com/chenqinghe/baidu-ai-go-sdk/vision"
-	"github.com/chenqinghe/baidu-ai-go-sdk/vision/face/v2"
+	"github.com/kingjh/baidu-ai-go-sdk/vision"
+	"github.com/kingjh/baidu-ai-go-sdk/vision/face/v2"
 )
 
 func Match() {

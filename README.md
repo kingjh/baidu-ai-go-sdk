@@ -68,4 +68,4 @@
 
 
 # LISENCE
-the project is licensed under the [Apache License 2.0](https://github.com/chenqinghe/baidu-ai-go-sdk/blob/master/LICENSE) 
+the project is licensed under the [Apache License 2.0](https://github.com/kingjh/baidu-ai-go-sdk/blob/master/LICENSE) 

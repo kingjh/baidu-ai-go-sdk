@@ -34,8 +34,8 @@ type TTSParams struct {
 type TTSParam func(params *TTSParams)
 
 func Speed(spd int) TTSParam {
-	if spd > 9 {
-		spd = 9
+	if spd > 15 {
+		spd = 15
 	}
 	if spd < 0 {
 		spd = 0
@@ -46,8 +46,8 @@ func Speed(spd int) TTSParam {
 }
 
 func Pitch(pit int) TTSParam {
-	if pit > 9 {
-		pit = 9
+	if pit > 15 {
+		pit = 15
 	}
 	if pit < 0 {
 		pit = 0
@@ -80,8 +80,9 @@ func Person(per int) TTSParam {
 
 //TextToSpeech 语音合成，将文字转换为语音
 func (vc *VoiceClient) TextToSpeech(txt string, params ...TTSParam) ([]byte, error) {
-
-	if len(txt) >= 1024 {
+	// 经测算，文本长度=6145即为百度接口可接受的最大值2048
+	a := len(txt)
+	if a >= 6146 {
 		return nil, ErrTextTooLong
 	}
 	if err := vc.Auth(); err != nil {
@@ -121,7 +122,7 @@ func (vc *VoiceClient) TextToSpeech(txt string, params ...TTSParam) ([]byte, err
 	if err != nil {
 		return nil, errors.New("serialize failed: " + err.Error())
 	}
-	var p  = req.Param{}
+	var p = req.Param{}
 	if err := json.Unmarshal(t, &p); err != nil {
 		return nil, err
 	}
@@ -130,7 +131,7 @@ func (vc *VoiceClient) TextToSpeech(txt string, params ...TTSParam) ([]byte, err
 	if err != nil {
 		return nil, err
 	}
-	
+
 	//通过Content-Type的头部来确定是否服务端合成成功。
 	//http://ai.baidu.com/docs#/TTS-API/top
 	respHeader := resp.Response().Header

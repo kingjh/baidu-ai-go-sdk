@@ -72,7 +72,7 @@ func WithVertexesLocation() RequestParam {
 }
 
 //front：身份证含照片的一面；back：身份证带国徽的一面
-func IDCardSide(side string) RequestParam {
+func IdcardSide(side string) RequestParam {
 	return func(m map[string]interface{}) {
 		m["id_card_side"] = side
 	}
@@ -83,6 +83,13 @@ func IDCardSide(side string) RequestParam {
 func DetectRisk() RequestParam {
 	return func(m map[string]interface{}) {
 		m["detect_risk"] = true
+	}
+}
+
+//期望获取结果的类型，取值为“excel”时返回xls文件的地址，取值为“json”时返回json格式的字符串,默认为”excel”
+func ResultType(resultType string) RequestParam {
+	return func(m map[string]interface{}) {
+		m["result_type"] = resultType
 	}
 }
 

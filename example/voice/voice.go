@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/chenqinghe/baidu-ai-go-sdk/voice"
+	"github.com/kingjh/baidu-ai-go-sdk/voice"
 	"log"
 	"os"
 )

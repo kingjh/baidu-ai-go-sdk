@@ -2,11 +2,11 @@ package gosdk
 
 import (
 	"errors"
-	
+
 	"github.com/imroc/req"
 )
 
-const VOICE_AUTH_URL = "https://openapi.baidu.com/oauth/2.0/token"
+const VOICE_AUTH_URL = "https://aip.baidubce.com/oauth/2.0/token"
 
 // Authorizer 用于设置access_token
 // 可以通过RESTFul api的方式从百度方获取
@@ -51,7 +51,7 @@ func (da DefaultAuthorizer) Authorize(client *Client) error {
 	if authresponse.ERROR != "" || authresponse.AccessToken == "" {
 		return errors.New("授权失败:" + authresponse.ErrorDescription)
 	}
-	
+
 	client.AccessToken = authresponse.AccessToken
 	return nil
 }
@@ -60,7 +60,7 @@ func (client *Client) Auth() error {
 	if client.AccessToken != "" {
 		return nil
 	}
-	
+
 	if err := client.Authorizer.Authorize(client); err != nil {
 		return err
 	}

@@ -3,8 +3,8 @@ package v2
 import (
 	"fmt"
 
-	"github.com/chenqinghe/baidu-ai-go-sdk/vision"
 	"github.com/imroc/req"
+	"github.com/kingjh/baidu-ai-go-sdk/vision"
 )
 
 const (

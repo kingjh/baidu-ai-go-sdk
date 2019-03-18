@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/chenqinghe/baidu-ai-go-sdk/vision"
-	"github.com/chenqinghe/baidu-ai-go-sdk/vision/ocr"
+	"github.com/kingjh/baidu-ai-go-sdk/vision"
+	"github.com/kingjh/baidu-ai-go-sdk/vision/ocr"
 )
 
 const (
 	// This Api Key and Api Secret is just for example,
 	// you should get your own first.
-	APIKEY    = "MDNsII2jkUtbF729GQOZt7FS"
-	APISECRET = "0vWCVCLsbWHMSH1wjvxaDq4VmvCZM2O9"
+	APIKEY    = "OyqxWZRpQhMLfPdPnG68DBFc"
+	APISECRET = "TmcSKBQ70itvxSpkjH42r3e52jnp1oQx"
 )
 
 var client *ocr.OCRClient
@@ -20,13 +20,13 @@ func init() {
 }
 
 func main() {
-	GeneralRecognizeBasic()
-	GeneralRecognizeEnhanced()
+	GeneralBasicRecognize()
+	//GeneralRecognizeEnhanced()
 }
 
-func GeneralRecognizeBasic() {
-	rs, err := client.GeneralRecognizeBasic(
-		vision.MustFromFile("ocr.jpg"),
+func GeneralBasicRecognize() {
+	rs, err := client.GeneralBasicRecognize(
+		vision.MustFromFile("D:\\projs\\go\\src\\github.com\\chenqinghe\\baidu-ai-go-sdk\\example\\vision\\ocr\\ocr.jpg"),
 		ocr.DetectDirection(),       //是否检测图像朝向，默认不检测
 		ocr.DetectLanguage(),        //是否检测语言，默认不检测。
 		ocr.LanguageType("CHN_ENG"), //识别语言类型，默认为CHN_ENG。
@@ -39,17 +39,17 @@ func GeneralRecognizeBasic() {
 	fmt.Println(rs.ToString())
 }
 
-func GeneralRecognizeEnhanced() {
-
-	resp, err := client.GeneralRecognizeEnhanced(
-		vision.MustFromFile("ocr.jpg"),
-		ocr.DetectDirection(),
-		ocr.DetectLanguage(),
-		ocr.LanguageType("CHN_ENG"),
-	)
-	if err != nil {
-		panic(err)
-	}
-	fmt.Println(resp.ToString())
-
-}
+//func GeneralRecognizeEnhanced() {
+//
+//	resp, err := client.GeneralRecognizeEnhanced(
+//		vision.MustFromFile("ocr.jpg"),
+//		ocr.DetectDirection(),
+//		ocr.DetectLanguage(),
+//		ocr.LanguageType("CHN_ENG"),
+//	)
+//	if err != nil {
+//		panic(err)
+//	}
+//	fmt.Println(resp.ToString())
+//
+//}
